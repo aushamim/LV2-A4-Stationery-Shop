@@ -107,6 +107,8 @@ const Footer = () => {
           </div>
         </div>
       </div>
+
+      <div className="text-center mt-5 font-semibold text-gray-600">Copyright © 2025 PenCraft - All Rights Reserved</div>
     </footer>
   );
 };

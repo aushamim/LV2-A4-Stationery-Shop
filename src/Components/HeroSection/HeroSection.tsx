@@ -68,8 +68,8 @@ const HeroSection = () => {
         ))}
       </Swiper>
 
-      <div className="mt-5 border border-sky-200 p-5 grid-cols-2 grid xl:grid-cols-4 rounded">
-        <div className="border-b xl:border-b-0 border-r border-sky-200 p-2 xl:p-0">
+      <div className="mt-5 border border-slate-200 p-5 grid-cols-2 grid xl:grid-cols-4 rounded">
+        <div className="border-b xl:border-b-0 border-r border-slate-200 p-2 xl:p-0">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
@@ -77,7 +77,7 @@ const HeroSection = () => {
             stroke-width="2"
             stroke-linecap="round"
             stroke-linejoin="round"
-            className="size-10 stroke-sky-600 mx-auto"
+            className="size-10 stroke-slate-600 mx-auto"
           >
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
             <path d="M7 17m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
@@ -88,7 +88,7 @@ const HeroSection = () => {
           <p className="text-center mt-2 mb-1 font-semibold">FREE SHIPPING</p>
           <p className="text-center">For all order over 99$</p>
         </div>
-        <div className="border-b xl:border-b-0 xl:border-r border-sky-200 p-2 xl:p-0">
+        <div className="border-b xl:border-b-0 xl:border-r border-slate-200 p-2 xl:p-0">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
@@ -96,7 +96,7 @@ const HeroSection = () => {
             stroke-width="2"
             stroke-linecap="round"
             stroke-linejoin="round"
-            className="size-10 stroke-sky-600 mx-auto"
+            className="size-10 stroke-slate-600 mx-auto"
           >
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
             <path d="M20.942 13.021a9 9 0 1 0 -9.407 7.967" />
@@ -106,7 +106,7 @@ const HeroSection = () => {
           <p className="text-center mt-2 mb-1 font-semibold">DELIVERY ON TIME</p>
           <p className="text-center">Perfect goods condition</p>
         </div>
-        <div className="border-r border-sky-200 p-2 xl:p-0">
+        <div className="border-r border-slate-200 p-2 xl:p-0">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
@@ -114,7 +114,7 @@ const HeroSection = () => {
             stroke-width="2"
             stroke-linecap="round"
             stroke-linejoin="round"
-            className="size-10 stroke-sky-600 mx-auto"
+            className="size-10 stroke-slate-600 mx-auto"
           >
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
             <path d="M3 5m0 3a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v8a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3z" />
@@ -133,7 +133,7 @@ const HeroSection = () => {
             stroke-width="2"
             stroke-linecap="round"
             stroke-linejoin="round"
-            className="size-10 stroke-sky-600 mx-auto"
+            className="size-10 stroke-slate-600 mx-auto"
           >
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
             <path d="M4 14v-3a8 8 0 1 1 16 0v3" />

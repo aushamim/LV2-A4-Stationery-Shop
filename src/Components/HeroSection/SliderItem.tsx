@@ -14,7 +14,7 @@ const SliderItem = ({ button, heading = "", bgUrl }: SliderPropsInterface) => {
     >
       <div className="backdrop-blur-sm h-full w-full p-8 flex flex-col justify-center">
         <h1 className="text-3xl xl:text-5xl text-white font-bold drop-shadow-md">{heading}</h1>
-        <Link to={button?.path} className="bg-sky-500 p-1 px-2 xl:p-3 block mt-5 w-fit rounded-lg text-white font-semibold xl:text-lg">
+        <Link to={button?.path} className="bg-slate-500 p-1 px-2 xl:p-3 block mt-5 w-fit rounded-lg text-white font-semibold xl:text-lg">
           {button?.text}
         </Link>
       </div>

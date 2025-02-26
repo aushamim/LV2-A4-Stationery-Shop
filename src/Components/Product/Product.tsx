@@ -1,29 +1,43 @@
 import { Link } from "react-router";
 
-const Product = () => {
+export interface IProduct {
+  _id: string;
+  name: string;
+  brand: string;
+  description: string;
+  category: string;
+  price: number;
+  quantity: number;
+  imgUrl: string;
+  inStock: boolean;
+  createdAt: string;
+  updatedAt: string;
+}
+
+const Product = ({ product }: { product: IProduct }) => {
   return (
     <div className="relative w-full overflow-hidden rounded-md border hover:scale-[1.02] duration-300">
-      <Link to="/">
-        <img
-          className="h-32 xl:h-60 w-full rounded-t-md object-cover"
-          src="https://images.unsplash.com/flagged/photo-1556637640-2c80d3201be8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8c25lYWtlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
-          alt="product image"
-        />
+      <Link to={`/product/${product?._id}`}>
+        <img className="h-32 xl:h-60 w-full rounded-t-md object-cover" src={product?.imgUrl} alt={product?.name} />
       </Link>
-      <span className="absolute top-0 left-0 w-28 translate-y-4 -translate-x-7 -rotate-45 bg-red-500 text-center text-sm text-white uppercase">
-        Out
-      </span>
+      {product?.inStock ? (
+        ""
+      ) : (
+        <span className="absolute top-0 left-0 w-28 translate-y-4 -translate-x-7 -rotate-45 bg-red-500 text-center text-sm text-white uppercase">
+          Out
+        </span>
+      )}
       <div className="mt-4 px-3 xl:px-5 pb-5">
-        <Link to="/">
-          <h5 className="text-base text-center xl:text-left xl:text-xl font-semibold tracking-tight text-slate-900">Nike Air MX Super 5000</h5>
+        <Link to={`/product/${product?._id}`}>
+          <h5 className="text-base text-center xl:text-left xl:text-xl font-semibold tracking-tight text-slate-900">{product?.name}</h5>
         </Link>
         <div className="mt-2.5 mb-5 flex items-center justify-center xl:justify-start">
-          <span className="mr-2 rounded bg-slate-200 px-2.5 py-0.5 text-xs font-semibold">Office Supplies</span>
+          <span className="mr-2 rounded bg-slate-200 px-2.5 py-0.5 text-xs font-semibold">{product?.category}</span>
         </div>
         <div className="flex flex-col xl:flex-row items-center justify-between gap-5 xl:gap-0">
           <p>
-            <span className="text-3xl font-bold text-slate-900">$249</span>
-            <span className="text-sm text-slate-900 line-through">$299</span>
+            <span className="text-3xl font-bold text-slate-900">${product?.price}</span>
+            <span className="text-sm text-slate-900 line-through">${product?.price + parseInt((Math.random() * 10).toFixed())}</span>
           </p>
           <button className="flex items-center rounded-md bg-slate-900 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-gray-700 active:scale-95 duration-300">
             <svg xmlns="http://www.w3.org/2000/svg" className="mr-2 h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">

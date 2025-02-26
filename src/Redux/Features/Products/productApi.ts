@@ -1,5 +1,16 @@
-import { TResponseRedux } from "../../../Types/global";
+import { BaseQueryApi } from "@reduxjs/toolkit/query";
+import { TMeta } from "../../../Types/global";
 import { baseApi } from "../../baseApi";
+
+interface IResponse {
+  success: boolean;
+  statusCode: number;
+  message: string;
+  data: {
+    meta?: TMeta;
+    data?: any[];
+  };
+}
 
 const productApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
@@ -22,10 +33,11 @@ const productApi = baseApi.injectEndpoints({
         };
       },
       providesTags: ["product"],
-      transformResponse: (response: TResponseRedux<any[]>) => {
+
+      transformResponse: (response: IResponse & BaseQueryApi) => {
         return {
-          data: response.data,
-          meta: response.meta,
+          products: response?.data?.data,
+          meta: response?.data?.meta,
         };
       },
     }),

@@ -1,10 +1,10 @@
 import { Link } from "react-router";
-import { useGetProductsQuery } from "../../Redux/Features/Products/ProductApi";
+import { useGetProductsQuery } from "../../Redux/Features/Products/productApi";
 import Product from "../Product/Product";
 
 const FeaturedProducts = () => {
-  const { loading, data } = useGetProductsQuery(undefined);
-  console.log(data);
+  const { isLoading, data } = useGetProductsQuery({}, { refetchOnMountOrArgChange: true });
+  const products = data?.products?.slice(0, 8) || [];
 
   return (
     <div className="mt-8 xl:mt-16">
@@ -14,14 +14,7 @@ const FeaturedProducts = () => {
       </div>
 
       <div className="mt-10 grid grid-cols-2 xl:grid-cols-4 gap-4 xl:gap-7">
-        <Product />
-        <Product />
-        <Product />
-        <Product />
-        <Product />
-        <Product />
-        <Product />
-        <Product />
+        {products?.map((product) => <Product key={products.indexOf(product)} product={product} />)}
       </div>
 
       <div className="flex justify-end py-5">

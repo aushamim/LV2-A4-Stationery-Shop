@@ -2,23 +2,23 @@ import { Link } from "react-router";
 
 const Footer = () => {
   return (
-    <footer className="w-3/4 mx-auto pt-10 pb-5 px-2 border-b-8 border-sky-600">
-      <div className="grid grid-cols-3">
+    <footer className="w-11/12 xl:w-3/4 mx-auto pt-10 pb-5 px-2 border-b-8 border-sky-600">
+      <div className="grid grid-cols-1 xl:grid-cols-3">
         <div>
-          <div className="text-4xl font-semibold flex gap-2 items-center">
+          <div className="text-4xl font-semibold flex gap-2 items-center justify-center xl:justify-start">
             <img src="icon.png" alt="logo" className="size-14" />
             <p>
               <span className="text-sky-600">Pen</span>Craft
             </p>
           </div>
-          <div className="mt-7 mb-5 pl-1 text-lg font-semibold text-gray-500">
+          <div className="mt-7 mb-5 pl-1 text-lg font-semibold text-gray-500 text-center xl:text-left">
             <p>Address: Mohammadpur, Dhaka</p>
             <p>Phone: +88 01234567890</p>
             <p>Email: support@pen-craft.com</p>
           </div>
         </div>
 
-        <div className="col-span-2 grid grid-cols-3 gap-5">
+        <div className="col-span-2 hidden xl:grid grid-cols-3 gap-5">
           <div>
             <h1 className="uppercase text-xl font-semibold text-sky-600 my-3">information</h1>
 

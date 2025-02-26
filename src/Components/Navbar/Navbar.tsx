@@ -32,7 +32,7 @@ const Navbar = () => {
           <Link to="/dashboard" className="text-md font-semibold text-gray-600 hover:text-slate-600 duration-300 ease-in-out mx-3">
             Dashboard
           </Link>
-          <Link to="/dashboard" className="text-md font-semibold text-gray-600 hover:text-slate-600 duration-300 ease-in-out mx-3">
+          <Link to="/login" className="text-md font-semibold text-gray-600 hover:text-slate-600 duration-300 ease-in-out mx-3">
             Login
           </Link>
         </div>

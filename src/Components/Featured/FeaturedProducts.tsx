@@ -1,7 +1,11 @@
 import { Link } from "react-router";
+import { useGetProductsQuery } from "../../Redux/Features/Products/ProductApi";
 import Product from "../Product/Product";
 
 const FeaturedProducts = () => {
+  const { loading, data } = useGetProductsQuery(undefined);
+  console.log(data);
+
   return (
     <div className="mt-8 xl:mt-16">
       <div>

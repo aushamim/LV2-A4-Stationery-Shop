@@ -1,51 +1,108 @@
-# React + TypeScript + Vite
+# Stationery Shop 2
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[Live URL](https://stationary-shop-frontend-sigma.vercel.app/)
 
-Currently, two official plugins are available:
+Welcome to the Stationery Shop 2 project! This project is a web application designed to manage and sell stationery items.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Table of Contents
 
-## Expanding the ESLint configuration
+- [Project Overview](#project-overview)
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Project Structure](#project-structure)
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Project Overview
 
-- Configure the top-level `parserOptions` property like this:
+Stationery Shop 2 is the front-end of Stationery Shop project. It includes enhanced features for inventory management, user authentication, and a more user-friendly interface.
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## Features
+
+- User authentication and authorization
+- Inventory management
+- Product search and filtering
+- Shopping cart functionality
+- Order management
+- Responsive design
+
+## Installation
+
+To get started with the project, follow these steps:
+
+1. Clone the repository:
+   ```bash
+   git clone <repository-url>
+   ```
+2. Navigate to the project directory:
+
+3. Install the dependencies:
+   ```bash
+   npm install
+   ```
+
+## Usage
+
+To start the development server, run:
+
+```bash
+npm start
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+Open your browser and navigate to `http://localhost:5173` to view the application.
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+## Project Structure
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
 ```
-# LV2-A4-Stationery-Shop
+.
+├── public/
+│   ├── _redirects
+│   ├── .htaccess
+│   ├── assets/
+│   │   └── images/
+│   ├── icon.png
+│   ├── vite.svg
+├── src/
+│   ├── Components/
+│   │   ├── Featured/
+│   │   ├── Footer/
+│   │   ├── FormInput/
+│   │   ├── HeroSection/
+│   │   ├── Loader/
+│   │   ├── Navbar/
+│   │   └── Product/
+│   ├── Pages/
+│   │   ├── About/
+│   │   ├── Auth/
+│   │   ├── Home/
+│   │   ├── NotFound/
+│   │   └── Shop/
+│   ├── Redux/
+│   │   ├── Features/
+│   │   │   ├── Auth/
+│   │   │   ├── Cart/
+│   │   │   └── Products/
+│   │   ├── baseApi.ts
+│   │   ├── hooks.ts
+│   │   └── store.ts
+│   ├── Routes/
+│   ├── Types/
+│   ├── Utils/
+│   ├── App.css
+│   ├── App.tsx
+│   ├── index.css
+│   ├── main.tsx
+│   └── vite-env.d.ts
+├── .cz-config.js.json
+├── .gitignore
+├── .prettierrc
+├── eslint.config.js
+├── index.html
+├── package.json
+├── postcss.config.js
+├── tailwind.config.js
+├── tsconfig.app.json
+├── tsconfig.json
+├── tsconfig.node.json
+├── vercel.json
+└── README.md
+```

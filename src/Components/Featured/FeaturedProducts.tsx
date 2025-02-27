@@ -3,7 +3,7 @@ import { useGetProductsQuery } from "../../Redux/Features/Products/productApi";
 import Product from "../Product/Product";
 
 const FeaturedProducts = () => {
-  const { isLoading, data } = useGetProductsQuery({}, { refetchOnMountOrArgChange: true });
+  const { data } = useGetProductsQuery({}, { refetchOnMountOrArgChange: true });
   const products = data?.products?.slice(0, 8) || [];
 
   return (

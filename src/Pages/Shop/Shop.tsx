@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Loader from "../../Components/Loader/Loader";
 import Product from "../../Components/Product/Product";
 import { useGetProductsQuery } from "../../Redux/Features/Products/productApi";
 
@@ -11,10 +12,11 @@ const Shop = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
 
-  const { isLoading, data } = useGetProductsQuery(
+  const { isFetching, isLoading, data } = useGetProductsQuery(
     { searchTerm: search, category: filterCategory, inStock: availability, sort: sortOption, page: currentPage },
     { refetchOnMountOrArgChange: true },
   );
+
   const products = data?.products;
 
   const handleFilterChange = (value: any) => {
@@ -63,12 +65,10 @@ const Shop = () => {
 
         <select
           className="select select-bordered select-sm w-full xl:w-56"
-          value={filterCategory}
+          defaultValue={filterCategory}
           onChange={(e) => handleFilterChange(e.target.value)}
         >
-          <option value="all" selected>
-            All Categories
-          </option>
+          <option value="all">All Categories</option>
           <option value="Writing">Writing</option>
           <option value="Office Supplies">Office Supplies</option>
           <option value="Art Supplies">Art Supplies</option>
@@ -78,27 +78,33 @@ const Shop = () => {
 
         <select
           className="select select-bordered select-sm w-full xl:w-56"
-          value={filterCategory}
+          defaultValue={filterCategory}
           onChange={(e) => handleAvailabilityChange(e.target.value)}
         >
-          <option selected>Availability</option>
+          <option value={undefined}>Availability</option>
           <option value="true">In Stock</option>
           <option value="false">Out of Stock</option>
         </select>
 
-        <select className="select select-bordered select-sm w-full xl:w-56" value={filterCategory} onChange={(e) => handleSortChange(e.target.value)}>
-          <option selected disabled>
-            Sort by Price
-          </option>
+        <select
+          className="select select-bordered select-sm w-full xl:w-56"
+          defaultValue={filterCategory}
+          onChange={(e) => handleSortChange(e.target.value)}
+        >
+          <option value={undefined}>Sort by Price</option>
           <option value="price">Low to High</option>
           <option value="-price">High to Low</option>
         </select>
       </div>
 
       {/* Products */}
-      <div className="mt-10 grid grid-cols-2 xl:grid-cols-4 gap-4 xl:gap-7">
-        {products?.map((product) => <Product key={products.indexOf(product)} product={product} />)}
-      </div>
+      {isLoading || isFetching ? (
+        <Loader />
+      ) : (
+        <div className="mt-10 grid grid-cols-2 xl:grid-cols-4 gap-4 xl:gap-7">
+          {products?.map((product) => <Product key={products.indexOf(product)} product={product} />)}
+        </div>
+      )}
 
       {/* Pagination */}
       <div className="flex justify-center mt-8">

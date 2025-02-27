@@ -1,13 +1,16 @@
 import { Link, useNavigate } from "react-router";
-import { logout } from "../../Redux/Features/Auth/authSlice";
-import { useAppDispatch } from "../../Redux/hooks";
+import { toast } from "sonner";
+import { logout, selectCurrentUser } from "../../Redux/Features/Auth/authSlice";
+import { useAppDispatch, useAppSelector } from "../../Redux/hooks";
 
 const Navbar = () => {
   const dispatch = useAppDispatch();
+  const user = useAppSelector(selectCurrentUser);
   const navigate = useNavigate();
 
   const handleLogout = () => {
     dispatch(logout());
+    toast.success("Logged out successfully");
     navigate("/");
   };
 
@@ -42,12 +45,16 @@ const Navbar = () => {
           <Link to="/dashboard" className="text-md font-semibold text-gray-600 hover:text-slate-600 duration-300 ease-in-out mx-3">
             Dashboard
           </Link>
-          <Link to="/login" className="text-md font-semibold text-gray-600 hover:text-slate-600 duration-300 ease-in-out mx-3">
-            Login
-          </Link>
-          <button className="text-md font-semibold text-gray-600 hover:text-slate-600 duration-300 ease-in-out mx-3" onClick={handleLogout}>
-            Logout
-          </button>
+
+          {user ? (
+            <button className="text-md font-semibold text-gray-600 hover:text-slate-600 duration-300 ease-in-out mx-3" onClick={handleLogout}>
+              Logout
+            </button>
+          ) : (
+            <Link to="/login" className="text-md font-semibold text-gray-600 hover:text-slate-600 duration-300 ease-in-out mx-3">
+              Login
+            </Link>
+          )}
         </div>
 
         <div className="flex items-center justify-end">

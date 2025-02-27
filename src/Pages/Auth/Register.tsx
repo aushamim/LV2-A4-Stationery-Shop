@@ -1,8 +1,8 @@
 import { Form, Formik } from "formik";
 import { Link, useNavigate } from "react-router";
+import { toast } from "sonner";
 import FormInput from "../../Components/FormInput/FormInput";
 import { useRegisterMutation } from "../../Redux/Features/Auth/authApi";
-import { useAppDispatch } from "../../Redux/hooks";
 
 export interface IRegisterValues {
   name: string;
@@ -13,14 +13,17 @@ export interface IRegisterValues {
 }
 
 const Register = () => {
-  const dispatch = useAppDispatch();
   const [register] = useRegisterMutation();
   const navigate = useNavigate();
 
   const handleSubmit = async (values: IRegisterValues) => {
-    const res = await register(values).unwrap();
-
-    navigate("/login");
+    try {
+      await register(values).unwrap();
+      toast.success("User registered successfully. Please login.");
+      navigate("/login");
+    } catch (err: any) {
+      toast.error(err?.data?.message);
+    }
   };
   return (
     <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">

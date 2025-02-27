@@ -54,5 +54,5 @@ const cartSlice = createSlice({
 });
 
 export const { addProduct, removeProduct } = cartSlice.actions;
-export const selectTotalPrice = (state: { cart: ICartProduct }) => state.cart.totalPrice;
+export const selectTotalPrice = (state: { cart: ICartProduct }) => parseFloat(state.cart.totalPrice.toFixed(2));
 export default cartSlice.reducer;

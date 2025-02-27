@@ -1,4 +1,6 @@
 import { Link } from "react-router";
+import { addProduct } from "../../Redux/Features/Cart/cartSlice";
+import { useAppDispatch } from "../../Redux/hooks";
 
 export interface IProduct {
   _id: string;
@@ -15,6 +17,11 @@ export interface IProduct {
 }
 
 const Product = ({ product }: { product: IProduct }) => {
+  const dispatch = useAppDispatch();
+  const handleAddToCart = () => {
+    dispatch(addProduct({ id: product?._id, name: product?.name, price: product?.price }));
+  };
+
   return (
     <div className="relative w-full overflow-hidden rounded-md border hover:scale-[1.02] duration-300">
       <Link to={`/product/${product?._id}`}>
@@ -39,7 +46,10 @@ const Product = ({ product }: { product: IProduct }) => {
             <span className="text-3xl font-bold text-slate-900">${product?.price}</span>
             <span className="text-sm text-slate-900 line-through">${product?.price + parseInt((Math.random() * 10).toFixed())}</span>
           </p>
-          <button className="flex items-center rounded-md bg-slate-900 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-gray-700 active:scale-95 duration-300">
+          <button
+            className="flex items-center rounded-md bg-slate-900 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-gray-700 active:scale-95 duration-300"
+            onClick={handleAddToCart}
+          >
             <svg xmlns="http://www.w3.org/2000/svg" className="mr-2 h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
               <path
                 strokeLinecap="round"

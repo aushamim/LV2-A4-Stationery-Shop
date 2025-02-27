@@ -1,11 +1,15 @@
+import { shallowEqual } from "react-redux";
 import { Link, useNavigate } from "react-router";
 import { toast } from "sonner";
 import { logout, selectCurrentUser } from "../../Redux/Features/Auth/authSlice";
+import { selectTotalPrice } from "../../Redux/Features/Cart/cartSlice";
 import { useAppDispatch, useAppSelector } from "../../Redux/hooks";
 
 const Navbar = () => {
   const dispatch = useAppDispatch();
   const user = useAppSelector(selectCurrentUser);
+  const cartTotalPrice = useAppSelector(selectTotalPrice, shallowEqual);
+
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -13,6 +17,29 @@ const Navbar = () => {
     toast.success("Logged out successfully");
     navigate("/");
   };
+
+  const navItems = [
+    {
+      path: "/",
+      name: "Home",
+    },
+    {
+      path: "/shop",
+      name: "Shop",
+    },
+    {
+      path: "/about",
+      name: "About",
+    },
+    {
+      path: "/cart",
+      name: "Cart",
+    },
+    {
+      path: "/dashboard",
+      name: "Dashboard",
+    },
+  ];
 
   return (
     <nav>
@@ -27,24 +54,15 @@ const Navbar = () => {
         </div>
 
         <div className="col-span-3 flex items-center justify-center">
-          <Link to="/" className="text-md font-semibold text-gray-600 hover:text-slate-600 duration-300 ease-in-out mx-3">
-            Home
-          </Link>
-          <Link to="/shop" className="text-md font-semibold text-gray-600 hover:text-slate-600 duration-300 ease-in-out mx-3">
-            Shop
-          </Link>
-          <Link to="/about" className="text-md font-semibold text-gray-600 hover:text-slate-600 duration-300 ease-in-out mx-3">
-            About
-          </Link>
-          <Link to="/cart" className="text-md font-semibold text-gray-600 hover:text-slate-600 duration-300 ease-in-out mx-3">
-            Cart
-          </Link>
-          <Link to="/create-product" className="text-md font-semibold text-gray-600 hover:text-slate-600 duration-300 ease-in-out mx-3">
-            Create Product
-          </Link>
-          <Link to="/dashboard" className="text-md font-semibold text-gray-600 hover:text-slate-600 duration-300 ease-in-out mx-3">
-            Dashboard
-          </Link>
+          {navItems?.map((navItem) => (
+            <Link
+              to={navItem?.path}
+              key={navItems.indexOf(navItem)}
+              className="text-md font-semibold text-gray-600 hover:text-slate-600 duration-300 ease-in-out mx-3"
+            >
+              {navItem?.name}
+            </Link>
+          ))}
 
           {user ? (
             <button className="text-md font-semibold text-gray-600 hover:text-slate-600 duration-300 ease-in-out mx-3" onClick={handleLogout}>
@@ -74,7 +92,7 @@ const Navbar = () => {
                 <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12" />
               </svg>
             </div>
-            <div className="pl-1 pr-3 font-semibold text-slate-700">$0</div>
+            <div className="pl-1 pr-3 font-semibold text-slate-700">${cartTotalPrice}</div>
           </Link>
         </div>
       </div>
@@ -117,16 +135,27 @@ const Navbar = () => {
           <label htmlFor="nav-drawer" aria-label="close sidebar" className="drawer-overlay"></label>
           <ul className="menu bg-white text-base-content min-h-full w-80 p-4 flex flex-col">
             <div className="flex-grow">
-              <li>
-                <Link to="/dashboard" className="text-md font-semibold text-gray-600 hover:text-slate-600 duration-300 ease-in-out">
-                  Login
-                </Link>
-              </li>
-              <li>
-                <Link to="/dashboard" className="text-md font-semibold text-gray-600 hover:text-slate-600 duration-300 ease-in-out">
-                  Login
-                </Link>
-              </li>
+              {navItems?.map((navItem) => (
+                <li key={navItems.indexOf(navItem)}>
+                  <Link to={navItem?.path} className="text-md font-semibold text-gray-600 hover:text-slate-600 duration-300 ease-in-out">
+                    {navItem?.name}
+                  </Link>
+                </li>
+              ))}
+
+              {user ? (
+                <li>
+                  <button className="text-md font-semibold text-gray-600 hover:text-slate-600 duration-300 ease-in-out" onClick={handleLogout}>
+                    Logout
+                  </button>
+                </li>
+              ) : (
+                <li>
+                  <Link to="/login" className="text-md font-semibold text-gray-600 hover:text-slate-600 duration-300 ease-in-out">
+                    Login
+                  </Link>
+                </li>
+              )}
             </div>
 
             <div>
@@ -147,7 +176,7 @@ const Navbar = () => {
                   </svg>
                   <p className="font-semibold">Cart</p>
                 </div>
-                <div className="pl-1 pr-3 font-semibold text-slate-700">$0</div>
+                <div className="pl-1 pr-3 font-semibold text-slate-700">${cartTotalPrice}</div>
               </Link>
             </div>
           </ul>

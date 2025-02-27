@@ -3,11 +3,12 @@ import { FLUSH, PAUSE, PERSIST, persistReducer, persistStore, PURGE, REGISTER, R
 import storage from "redux-persist/lib/storage";
 import { baseApi } from "./baseApi";
 import authReducer from "./Features/Auth/authSlice";
+import cartReducer from "./Features/Cart/cartSlice";
 
 export const rootReducer = combineReducers({
   [baseApi.reducerPath]: baseApi.reducer,
   auth: authReducer,
-  //   cart: cartReducer,
+  cart: cartReducer,
 });
 
 const persistConfig = { key: "root", storage };

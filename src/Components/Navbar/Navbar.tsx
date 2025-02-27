@@ -1,6 +1,16 @@
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
+import { logout } from "../../Redux/Features/Auth/authSlice";
+import { useAppDispatch } from "../../Redux/hooks";
 
 const Navbar = () => {
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    dispatch(logout());
+    navigate("/");
+  };
+
   return (
     <nav>
       <div className="hidden xl:grid grid-cols-5 w-3/4 mx-auto py-3">
@@ -35,6 +45,9 @@ const Navbar = () => {
           <Link to="/login" className="text-md font-semibold text-gray-600 hover:text-slate-600 duration-300 ease-in-out mx-3">
             Login
           </Link>
+          <button className="text-md font-semibold text-gray-600 hover:text-slate-600 duration-300 ease-in-out mx-3" onClick={handleLogout}>
+            Logout
+          </button>
         </div>
 
         <div className="flex items-center justify-end">

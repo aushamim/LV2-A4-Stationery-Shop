@@ -107,19 +107,23 @@ const Shop = () => {
       )}
 
       {/* Pagination */}
-      <div className="flex justify-center mt-8">
-        <div className="btn-group join">
-          <button className="join-item btn" onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1}>
-            Prev
-          </button>
-          <button className="join-item btn">
-            Page {currentPage} of {totalPages}
-          </button>
-          <button className="join-item btn" onClick={() => handlePageChange(currentPage + 1)} disabled={currentPage === totalPages}>
-            Next
-          </button>
+      {products ? (
+        <div className="flex justify-center mt-8">
+          <div className="btn-group join">
+            <button className="join-item btn btn-sm" onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1}>
+              &lt;
+            </button>
+            <button className="join-item btn btn-sm">
+              Page {currentPage} of {totalPages}
+            </button>
+            <button className="join-item btn btn-sm" onClick={() => handlePageChange(currentPage + 1)} disabled={currentPage === totalPages}>
+              &gt;
+            </button>
+          </div>
         </div>
-      </div>
+      ) : (
+        ""
+      )}
     </div>
   );
 };

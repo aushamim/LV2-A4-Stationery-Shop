@@ -3,6 +3,7 @@ import App from "../App";
 import About from "../Pages/About/About";
 import Login from "../Pages/Auth/Login";
 import Register from "../Pages/Auth/Register";
+import UserDashboard from "../Pages/Dashboard/UserDashboard";
 import Home from "../Pages/Home/Home";
 import NotFound from "../Pages/NotFound/NotFound";
 import Shop from "../Pages/Shop/Shop";
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
       {
         path: "/register",
         element: <Register />,
+      },
+      {
+        path: "/dashboard",
+        element: <UserDashboard />,
       },
       {
         path: "/about",

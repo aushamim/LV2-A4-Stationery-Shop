@@ -1,9 +1,10 @@
 import { Link } from "react-router";
 import { useGetProductsQuery } from "../../Redux/Features/Products/productApi";
+import Loader from "../Loader/Loader";
 import Product from "../Product/Product";
 
 const FeaturedProducts = () => {
-  const { data } = useGetProductsQuery({}, { refetchOnMountOrArgChange: true });
+  const { isLoading, data } = useGetProductsQuery({}, { refetchOnMountOrArgChange: true });
   const products = data?.products?.slice(0, 8) || [];
 
   return (
@@ -13,9 +14,13 @@ const FeaturedProducts = () => {
         <span className="w-20 h-1 bg-slate-300 block mx-auto mt-2"></span>
       </div>
 
-      <div className="mt-10 grid grid-cols-2 xl:grid-cols-4 gap-4 xl:gap-7">
-        {products?.map((product) => <Product key={products.indexOf(product)} product={product} />)}
-      </div>
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <div className="mt-10 grid grid-cols-2 xl:grid-cols-4 gap-4 xl:gap-7">
+          {products?.map((product) => <Product key={products.indexOf(product)} product={product} />)}
+        </div>
+      )}
 
       <div className="flex justify-end py-5">
         <Link

@@ -12,10 +12,15 @@ const Shop = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
 
-  const { isFetching, isLoading, data } = useGetProductsQuery(
-    { searchTerm: search, category: filterCategory, inStock: availability, sort: sortOption, page: currentPage },
-    { refetchOnMountOrArgChange: true },
-  );
+  const queryArgs = {
+    searchTerm: search,
+    category: filterCategory,
+    sort: sortOption,
+    page: currentPage,
+    ...(availability !== "all" && { inStock: availability }),
+  };
+
+  const { isFetching, isLoading, data } = useGetProductsQuery(queryArgs, { refetchOnMountOrArgChange: true });
 
   const products = data?.products;
 
@@ -81,7 +86,7 @@ const Shop = () => {
           defaultValue={filterCategory}
           onChange={(e) => handleAvailabilityChange(e.target.value)}
         >
-          <option value={undefined}>Availability</option>
+          <option value="all">Availability</option>
           <option value="true">In Stock</option>
           <option value="false">Out of Stock</option>
         </select>
@@ -100,6 +105,11 @@ const Shop = () => {
       {/* Products */}
       {isLoading || isFetching ? (
         <Loader />
+      ) : products?.length === 0 ? (
+        <div className="py-16">
+          <img className="size-20 mx-auto" src="assets/images/stationery.png" alt="no product found" />
+          <p className="text-center mt-3 text-xl">No Products Found</p>
+        </div>
       ) : (
         <div className="mt-10 grid grid-cols-2 xl:grid-cols-4 gap-4 xl:gap-7">
           {products?.map((product) => <Product key={products.indexOf(product)} product={product} />)}
@@ -107,7 +117,7 @@ const Shop = () => {
       )}
 
       {/* Pagination */}
-      {products ? (
+      {products && products.length > 0 ? (
         <div className="flex justify-center mt-8">
           <div className="btn-group join">
             <button className="join-item btn btn-sm" onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1}>

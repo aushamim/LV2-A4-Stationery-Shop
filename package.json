@@ -8,6 +8,7 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
+    "release": "yarn build && npx vercel --prod",
     "commit": "node ./node_modules/cz-customizable/standalone.js"
   },
   "dependencies": {

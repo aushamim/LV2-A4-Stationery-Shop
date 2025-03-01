@@ -12,7 +12,7 @@ const About = () => {
       <div className="text-white flex-grow rounded-md">
         <div className="h-full w-full p-8 flex flex-col justify-center">
           <h1 className="text-2xl xl:text-5xl text-white font-bold drop-shadow-md">
-            Your one-stop destination for high-quality office and school supplies.
+            Your one-stop destination for high-quality office and school supplies
           </h1>
           <Link to="/shop" className="bg-slate-500 p-1 px-2 xl:p-3 block mt-5 w-fit rounded-lg text-white font-semibold xl:text-lg">
             Shop Now

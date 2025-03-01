@@ -30,3 +30,10 @@ export type TQueryParam = {
   name: string;
   value: boolean | React.Key;
 };
+
+export type TResponseUser = {
+  userId: string;
+  role: string;
+  iat: number;
+  exp: number;
+};

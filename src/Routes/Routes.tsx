@@ -3,7 +3,8 @@ import App from "../App";
 import About from "../Pages/About/About";
 import Login from "../Pages/Auth/Login";
 import Register from "../Pages/Auth/Register";
-import UserDashboard from "../Pages/Dashboard/UserDashboard";
+import Profile from "../Pages/Dashboard/Profile";
+import MyOrders from "../Pages/Dashboard/User/MyOrders";
 import Home from "../Pages/Home/Home";
 import NotFound from "../Pages/NotFound/NotFound";
 import Shop from "../Pages/Shop/Shop";
@@ -34,16 +35,25 @@ const router = createBrowserRouter([
         element: <Register />,
       },
       {
-        path: "/dashboard",
-        element: <UserDashboard />,
-      },
-      {
         path: "/about",
         element: <About />,
       },
       {
         path: "/shop",
         element: <Shop />,
+      },
+
+      {
+        path: "/dashboard",
+        element: <Profile />,
+      },
+      {
+        path: "/dashboard/profile",
+        element: <Profile />,
+      },
+      {
+        path: "/dashboard/my-orders",
+        element: <MyOrders />,
       },
     ],
   },

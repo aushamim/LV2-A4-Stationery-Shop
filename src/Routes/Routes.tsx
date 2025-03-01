@@ -7,6 +7,7 @@ import Profile from "../Pages/Dashboard/Profile";
 import MyOrders from "../Pages/Dashboard/User/MyOrders";
 import Home from "../Pages/Home/Home";
 import NotFound from "../Pages/NotFound/NotFound";
+import Product from "../Pages/Product/Product";
 import Shop from "../Pages/Shop/Shop";
 
 const router = createBrowserRouter([
@@ -41,6 +42,10 @@ const router = createBrowserRouter([
       {
         path: "/shop",
         element: <Shop />,
+      },
+      {
+        path: "/product/:productId",
+        element: <Product />,
       },
 
       {

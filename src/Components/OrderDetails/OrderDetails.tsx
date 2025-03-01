@@ -2,7 +2,7 @@ import { toast } from "sonner";
 import { useDeleteOrderMutation, useUpdateOrderMutation } from "../../Redux/Features/Orders/OrdersApi";
 import { OrderInterface } from "../../Types/global";
 
-const OrderDetails = ({ role, order }: { role: "admin" | "user"; order: OrderInterface }) => {
+const OrderDetails = ({ role, order }: { role: string; order: OrderInterface }) => {
   const formatDate = (date: string) => {
     return new Date(date).toLocaleDateString("en-US", {
       weekday: "short",

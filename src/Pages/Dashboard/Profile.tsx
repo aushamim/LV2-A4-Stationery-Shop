@@ -50,7 +50,7 @@ const Profile = () => {
 
   return (
     <div className="w-11/12 xl:w-3/4 mx-auto mt-5 mb-16">
-      <div>
+      <div className="hidden xl:block">
         <Tab active="profile" tabs={tabs} />
       </div>
 

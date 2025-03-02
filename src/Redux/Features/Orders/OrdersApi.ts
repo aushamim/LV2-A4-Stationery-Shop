@@ -20,16 +20,8 @@ const ordersApi = baseApi.injectEndpoints({
         url: "/orders/my-orders",
         method: "GET",
       }),
-      providesTags: ["order"],
+      providesTags: ["my-orders"],
     }),
-
-    // getAllOrders: builder.query({
-    //   query: () => ({
-    //     url: "/orders",
-    //     method: "GET",
-    //   }),
-    //   providesTags: ["order"],
-    // }),
 
     getAllOrders: builder.query({
       query: (args) => {
@@ -49,7 +41,7 @@ const ordersApi = baseApi.injectEndpoints({
           params: params,
         };
       },
-      providesTags: ["order"],
+      providesTags: ["orders"],
 
       transformResponse: (response: IResponse & BaseQueryApi) => {
         return {
@@ -63,9 +55,9 @@ const ordersApi = baseApi.injectEndpoints({
       query: (orderUpdateData) => ({
         url: `/orders/${orderUpdateData.orderId}`,
         method: "PATCH",
-        body: orderUpdateData.orderData,
+        body: orderUpdateData.orderUpdateData,
       }),
-      invalidatesTags: ["order"],
+      invalidatesTags: ["orders", "my-orders"],
     }),
 
     deleteOrder: builder.mutation({
@@ -73,7 +65,7 @@ const ordersApi = baseApi.injectEndpoints({
         url: `/orders/${orderId}`,
         method: "DELETE",
       }),
-      invalidatesTags: ["order"],
+      invalidatesTags: ["orders", "my-orders"],
     }),
   }),
 });

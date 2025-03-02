@@ -80,9 +80,9 @@ const OrderDetails = ({ role, order }: { role: string; order: OrderInterface }) 
                 <option value="" disabled>
                   Update Status
                 </option>
-                <option value="shipped">Shipped</option>
-                <option value="completed">Completed</option>
-                <option value="cancelled">Cancelled</option>
+                <option value="Shipped">Shipped</option>
+                <option value="Completed">Completed</option>
+                <option value="Cancelled">Cancelled</option>
               </select>
               <button
                 className="join-item btn btn-sm"
@@ -251,9 +251,9 @@ const OrderDetails = ({ role, order }: { role: string; order: OrderInterface }) 
                     <td>{product?.product?.name}</td>
                     <td>{product?.product?.brand}</td>
                     <td>{product?.product?.category}</td>
-                    <td>{product?.product?.price?.toFixed(2)}</td>
+                    <td>${product?.product?.price?.toFixed(2)}</td>
                     <td>{product?.quantity}</td>
-                    <td>{(product?.quantity * product?.product?.price).toFixed(2)}</td>
+                    <td>${(product?.quantity * product?.product?.price).toFixed(2)}</td>
                   </tr>
                 ))}
               </thead>

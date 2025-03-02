@@ -30,7 +30,7 @@ const AllOrders = () => {
 
   return (
     <div className="w-11/12 xl:w-3/4 mx-auto mt-5">
-      <div>
+      <div className="hidden xl:block">
         <Tab active="all orders" tabs={tabs} />
       </div>
 

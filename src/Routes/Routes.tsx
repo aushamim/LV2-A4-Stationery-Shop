@@ -4,6 +4,7 @@ import About from "../Pages/About/About";
 import Login from "../Pages/Auth/Login";
 import Register from "../Pages/Auth/Register";
 import AllOrders from "../Pages/Dashboard/Admin/AllOrders";
+import AllProducts from "../Pages/Dashboard/Admin/AllProducts";
 import Profile from "../Pages/Dashboard/Profile";
 import MyOrders from "../Pages/Dashboard/User/MyOrders";
 import Home from "../Pages/Home/Home";
@@ -60,9 +61,14 @@ const router = createBrowserRouter([
         path: "/dashboard/my-orders",
         element: <MyOrders />,
       },
+
       {
         path: "/dashboard/all-orders",
         element: <AllOrders />,
+      },
+      {
+        path: "/dashboard/all-products",
+        element: <AllProducts />,
       },
     ],
   },

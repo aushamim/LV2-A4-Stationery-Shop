@@ -35,11 +35,14 @@ const Navbar = () => {
       path: "/cart",
       name: "Cart",
     },
-    {
+  ];
+
+  if (user) {
+    navItems.push({
       path: "/dashboard",
       name: "Dashboard",
-    },
-  ];
+    });
+  }
 
   return (
     <nav>
@@ -142,6 +145,40 @@ const Navbar = () => {
                   </Link>
                 </li>
               ))}
+
+              {user && (
+                <li>
+                  <Link to="/dashboard" className="text-md font-semibold text-gray-600 hover:text-slate-600 duration-300 ease-in-out">
+                    Profile
+                  </Link>
+                </li>
+              )}
+
+              {user?.role === "user" ? (
+                <li>
+                  <Link to="/dashboard/my-orders" className="text-md font-semibold text-gray-600 hover:text-slate-600 duration-300 ease-in-out">
+                    My Orders
+                  </Link>
+                </li>
+              ) : (
+                <>
+                  <li>
+                    <Link to="/dashboard/all-orders" className="text-md font-semibold text-gray-600 hover:text-slate-600 duration-300 ease-in-out">
+                      All Orders
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/dashboard/all-products" className="text-md font-semibold text-gray-600 hover:text-slate-600 duration-300 ease-in-out">
+                      All Products
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/dashboard/add-product" className="text-md font-semibold text-gray-600 hover:text-slate-600 duration-300 ease-in-out">
+                      Add Product
+                    </Link>
+                  </li>
+                </>
+              )}
 
               {user ? (
                 <li>

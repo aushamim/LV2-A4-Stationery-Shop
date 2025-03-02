@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router";
 import App from "../App";
 import About from "../Pages/About/About";
+import AddProduct from "../Pages/AddProduct/AddProduct";
 import Login from "../Pages/Auth/Login";
 import Register from "../Pages/Auth/Register";
 import AllOrders from "../Pages/Dashboard/Admin/AllOrders";
@@ -69,6 +70,14 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/all-products",
         element: <AllProducts />,
+      },
+      {
+        path: "/dashboard/add-product",
+        element: <AddProduct />,
+      },
+      {
+        path: "/dashboard/edit-product/:productId",
+        element: <AddProduct />,
       },
     ],
   },

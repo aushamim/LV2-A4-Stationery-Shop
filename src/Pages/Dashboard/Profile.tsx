@@ -8,7 +8,7 @@ import UserDataElement from "../../Components/UserDataElement/UserDataElement";
 import { useGetUserDataMutation, useResetPassMutation } from "../../Redux/Features/Auth/authApi";
 import { selectCurrentUser } from "../../Redux/Features/Auth/authSlice";
 import { useAppSelector } from "../../Redux/hooks";
-import { tabs } from "./tabs";
+import { adminTabs, userTabs } from "./tabs";
 
 const Profile = () => {
   const [resetPass] = useResetPassMutation();
@@ -51,7 +51,7 @@ const Profile = () => {
   return (
     <div className="w-11/12 xl:w-3/4 mx-auto mt-5 mb-16">
       <div className="hidden xl:block">
-        <Tab active="profile" tabs={tabs} />
+        <Tab active="profile" tabs={user?.role === "admin" ? adminTabs : userTabs} />
       </div>
 
       <div className="mt-5">

@@ -3,8 +3,10 @@ import { useParams } from "react-router";
 import { toast } from "sonner";
 import FormInput from "../../Components/FormInput/FormInput";
 import Tab from "../../Components/Tab/Tab";
+import { selectCurrentUser } from "../../Redux/Features/Auth/authSlice";
 import { useCreateProductMutation, useGetProductQuery, useUpdateProductMutation } from "../../Redux/Features/Products/productApi";
-import { tabs } from "../Dashboard/tabs";
+import { useAppSelector } from "../../Redux/hooks";
+import { adminTabs, userTabs } from "../Dashboard/tabs";
 import { SingleProductInterface } from "../Product/Product";
 
 interface productInterface {
@@ -94,10 +96,12 @@ const AddProduct = () => {
     });
   };
 
+  const user = useAppSelector(selectCurrentUser);
+
   return (
     <div className="w-11/12 xl:w-3/4 mx-auto mt-5 mb-10">
       <div className="hidden xl:block">
-        <Tab active="add product" tabs={tabs} />
+        <Tab active="add product" tabs={user?.role === "admin" ? adminTabs : userTabs} />
       </div>
 
       <div className="mt-5 xl:w-1/2 mx-auto">

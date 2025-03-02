@@ -5,7 +5,7 @@ import { selectCurrentUser } from "../../../Redux/Features/Auth/authSlice";
 import { useGetMyOrdersQuery } from "../../../Redux/Features/Orders/OrdersApi";
 import { useAppSelector } from "../../../Redux/hooks";
 import { OrderInterface } from "../../../Types/global";
-import { tabs } from "../tabs";
+import { adminTabs, userTabs } from "../tabs";
 
 const MyOrders = () => {
   const user = useAppSelector(selectCurrentUser);
@@ -15,7 +15,7 @@ const MyOrders = () => {
   return (
     <div className="w-11/12 xl:w-3/4 mx-auto mt-5">
       <div className="hidden xl:block">
-        <Tab active="my orders" tabs={tabs} />
+        <Tab active="my orders" tabs={user?.role === "admin" ? adminTabs : userTabs} />
       </div>
 
       {isLoading || isFetching ? (

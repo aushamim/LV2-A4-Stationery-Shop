@@ -6,7 +6,7 @@ import { selectCurrentUser } from "../../../Redux/Features/Auth/authSlice";
 import { useGetAllOrdersQuery } from "../../../Redux/Features/Orders/OrdersApi";
 import { useAppSelector } from "../../../Redux/hooks";
 import { OrderInterface } from "../../../Types/global";
-import { tabs } from "../tabs";
+import { adminTabs, userTabs } from "../tabs";
 
 const AllOrders = () => {
   const user = useAppSelector(selectCurrentUser);
@@ -31,7 +31,7 @@ const AllOrders = () => {
   return (
     <div className="w-11/12 xl:w-3/4 mx-auto mt-5">
       <div className="hidden xl:block">
-        <Tab active="all orders" tabs={tabs} />
+        <Tab active="all orders" tabs={user?.role === "admin" ? adminTabs : userTabs} />
       </div>
 
       {/* Orders */}

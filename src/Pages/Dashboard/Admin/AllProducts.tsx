@@ -3,8 +3,10 @@ import { Link } from "react-router";
 import { toast } from "sonner";
 import Loader from "../../../Components/Loader/Loader";
 import Tab from "../../../Components/Tab/Tab";
+import { selectCurrentUser } from "../../../Redux/Features/Auth/authSlice";
 import { useDeleteProductMutation, useGetProductsQuery } from "../../../Redux/Features/Products/productApi";
-import { tabs } from "../tabs";
+import { useAppSelector } from "../../../Redux/hooks";
+import { adminTabs, userTabs } from "../tabs";
 
 const AllProducts = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -39,10 +41,12 @@ const AllProducts = () => {
     }
   };
 
+  const user = useAppSelector(selectCurrentUser);
+
   return (
     <div className="w-11/12 xl:w-3/4 mx-auto mt-5">
       <div className="hidden xl:block">
-        <Tab active="all products" tabs={tabs} />
+        <Tab active="all products" tabs={user?.role === "admin" ? adminTabs : userTabs} />
       </div>
 
       {/* Products */}

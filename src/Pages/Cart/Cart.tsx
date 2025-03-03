@@ -1,5 +1,6 @@
 import { Link } from "react-router";
 import { toast } from "sonner";
+import { selectCurrentUser } from "../../Redux/Features/Auth/authSlice";
 import { addProduct, clearCart, removeFromCart, removeProduct, selectCartData } from "../../Redux/Features/Cart/cartSlice";
 import { useCreateOrderMutation } from "../../Redux/Features/Orders/OrdersApi";
 import { useAppDispatch, useAppSelector } from "../../Redux/hooks";
@@ -22,8 +23,14 @@ const Cart = () => {
     dispatch(removeFromCart({ id, name, imgUrl, price }));
   };
 
+  const user = useAppSelector(selectCurrentUser);
   const [createOrder] = useCreateOrderMutation();
   const hancleCheckout = async () => {
+    if (!user) {
+      toast.error("Please login to place order");
+      return;
+    }
+
     const orderProducts = cartData?.products.map((product) => ({
       product: product?.id,
       quantity: product?.quantity,

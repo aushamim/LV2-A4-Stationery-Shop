@@ -76,7 +76,22 @@ const ordersApi = baseApi.injectEndpoints({
       }),
       invalidatesTags: ["orders", "my-orders"],
     }),
+
+    verifyOrder: builder.query({
+      query: (order_id) => ({
+        url: "/orders/verify-payment",
+        params: { order_id },
+        method: "GET",
+      }),
+    }),
   }),
 });
 
-export const { useGetAllOrdersQuery, useGetMyOrdersQuery, useCreateOrderMutation, useUpdateOrderMutation, useDeleteOrderMutation } = ordersApi;
+export const {
+  useGetAllOrdersQuery,
+  useGetMyOrdersQuery,
+  useCreateOrderMutation,
+  useUpdateOrderMutation,
+  useDeleteOrderMutation,
+  useVerifyOrderQuery,
+} = ordersApi;

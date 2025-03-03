@@ -13,6 +13,7 @@ import Home from "../Pages/Home/Home";
 import NotFound from "../Pages/NotFound/NotFound";
 import Product from "../Pages/Product/Product";
 import Shop from "../Pages/Shop/Shop";
+import VerifyPayment from "../Pages/VerifyPayment/VerifyPayment";
 
 const router = createBrowserRouter([
   {
@@ -54,6 +55,11 @@ const router = createBrowserRouter([
       {
         path: "/cart",
         element: <Cart />,
+      },
+
+      {
+        path: "/verifyPayment",
+        element: <VerifyPayment />,
       },
 
       {

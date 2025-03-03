@@ -127,7 +127,7 @@ const Cart = () => {
                 <p className="border py-2 px-3">Total Products:</p>
                 <p className="border py-2 px-3">{totalProducts}</p>
                 <p className="border py-2 px-3">Total Price:</p>
-                <p className="border py-2 px-3">${cartData?.totalPrice}</p>
+                <p className="border py-2 px-3">${cartData?.totalPrice?.toFixed(2)}</p>
               </div>
 
               <div className="mt-5">
@@ -143,8 +143,8 @@ const Cart = () => {
         </div>
       ) : (
         <div className="py-16">
-          <img className="size-20 mx-auto" src="assets/images/stationery.png" alt="no product found" />
-          <p className="text-center mt-3 text-xl">No Products Found</p>
+          <img className="size-20 mx-auto" src="/assets/images/stationery.png" alt="no product found" />
+          <p className="text-center mt-3 text-xl">No Products in the cart</p>
         </div>
       )}
     </div>

@@ -37,8 +37,13 @@ const AllOrders = () => {
       {/* Orders */}
       {isLoading ? (
         <Loader />
-      ) : (
+      ) : orders && orders?.length > 0 ? (
         <div className="mt-5">{orders?.map((order) => <OrderDetails key={order?._id} role={user?.role ?? "user"} order={order} />)}</div>
+      ) : (
+        <div className="py-16">
+          <img className="size-20 mx-auto" src="/assets/images/stationery.png" alt="no orders" />
+          <p className="text-center mt-3 text-xl">No orders yet</p>
+        </div>
       )}
 
       {/* Pagination */}

@@ -54,14 +54,14 @@ export const getRouter = (user: TResponseUser | null) => {
       path: "/cart",
       element: <Cart />,
     },
+    {
+      path: "/verifyPayment",
+      element: <VerifyPayment />,
+    },
   ];
 
   if (user) {
     childRoutes.push(
-      {
-        path: "/verifyPayment",
-        element: <VerifyPayment />,
-      },
       {
         path: "/dashboard",
         element: <Profile />,

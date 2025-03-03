@@ -22,7 +22,7 @@ export interface SingleProductInterface {
 
 const Product = () => {
   const { productId } = useParams();
-  const { data, isLoading, isFetching } = useGetProductQuery(productId);
+  const { data, isLoading } = useGetProductQuery(productId);
   const product: SingleProductInterface = data?.data;
 
   const dispatch = useAppDispatch();
@@ -36,7 +36,7 @@ const Product = () => {
 
   return (
     <div className="w-11/12 xl:w-3/4 mx-auto mt-16">
-      {isLoading || isFetching ? (
+      {isLoading ? (
         <Loader />
       ) : (
         <div className="grid grid-cols-1 xl:grid-cols-2 gap-5">

@@ -9,7 +9,7 @@ import { adminTabs, userTabs } from "../tabs";
 
 const MyOrders = () => {
   const user = useAppSelector(selectCurrentUser);
-  const { data, isLoading, isFetching } = useGetMyOrdersQuery(undefined);
+  const { data, isLoading } = useGetMyOrdersQuery(undefined);
   const orders: OrderInterface[] = data?.data;
 
   return (
@@ -18,7 +18,7 @@ const MyOrders = () => {
         <Tab active="my orders" tabs={user?.role === "admin" ? adminTabs : userTabs} />
       </div>
 
-      {isLoading || isFetching ? (
+      {isLoading ? (
         <Loader />
       ) : (
         <div className="mt-5">{orders?.map((order) => <OrderDetails key={order?._id} role={user?.role ?? "user"} order={order} />)}</div>

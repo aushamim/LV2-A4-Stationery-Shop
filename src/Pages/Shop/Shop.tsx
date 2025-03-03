@@ -20,7 +20,7 @@ const Shop = () => {
     ...(availability !== "all" && { inStock: availability }),
   };
 
-  const { isFetching, isLoading, data } = useGetProductsQuery(queryArgs, { refetchOnMountOrArgChange: true });
+  const { isLoading, data } = useGetProductsQuery(queryArgs, { refetchOnMountOrArgChange: true });
 
   const products = data?.products;
 
@@ -103,7 +103,7 @@ const Shop = () => {
       </div>
 
       {/* Products */}
-      {isLoading || isFetching ? (
+      {isLoading ? (
         <Loader />
       ) : products?.length === 0 ? (
         <div className="py-16">

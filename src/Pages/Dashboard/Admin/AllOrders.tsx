@@ -14,7 +14,7 @@ const AllOrders = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
 
-  const { data, isLoading, isFetching } = useGetAllOrdersQuery({ page: currentPage }, { refetchOnMountOrArgChange: true });
+  const { data, isLoading } = useGetAllOrdersQuery({ page: currentPage }, { refetchOnMountOrArgChange: true });
   const orders: OrderInterface[] | undefined = data?.orders;
 
   const totalPagesFromBackend = data?.meta?.totalPage || 1;
@@ -35,7 +35,7 @@ const AllOrders = () => {
       </div>
 
       {/* Orders */}
-      {isLoading || isFetching ? (
+      {isLoading ? (
         <Loader />
       ) : (
         <div className="mt-5">{orders?.map((order) => <OrderDetails key={order?._id} role={user?.role ?? "user"} order={order} />)}</div>

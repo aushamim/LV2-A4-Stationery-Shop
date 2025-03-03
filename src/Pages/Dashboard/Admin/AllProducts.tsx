@@ -12,7 +12,7 @@ const AllProducts = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
 
-  const { isFetching, isLoading, data } = useGetProductsQuery({ page: currentPage }, { refetchOnMountOrArgChange: true });
+  const { isLoading, data } = useGetProductsQuery({ page: currentPage }, { refetchOnMountOrArgChange: true });
   const products = data?.products;
 
   const [deleteProduct] = useDeleteProductMutation();
@@ -50,7 +50,7 @@ const AllProducts = () => {
       </div>
 
       {/* Products */}
-      {isLoading || isFetching ? (
+      {isLoading ? (
         <Loader />
       ) : (
         <div className="mt-5 overflow-x-scroll">

@@ -6,7 +6,7 @@ const Footer = () => {
       <div className="grid grid-cols-1 xl:grid-cols-3">
         <div>
           <div className="text-4xl font-semibold flex gap-2 items-center justify-center xl:justify-start">
-            <img src="icon.png" alt="logo" className="size-14" />
+            <img src="/icon.png" alt="logo" className="size-14" />
             <p>
               <span className="text-slate-600">Pen</span>Craft
             </p>

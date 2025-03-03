@@ -14,54 +14,56 @@ import NotFound from "../Pages/NotFound/NotFound";
 import Product from "../Pages/Product/Product";
 import Shop from "../Pages/Shop/Shop";
 import VerifyPayment from "../Pages/VerifyPayment/VerifyPayment";
+import { TResponseUser } from "../Types/global";
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <App />,
-    children: [
-      {
-        index: true,
-        element: <Home />,
-      },
-      {
-        path: "/home",
-        element: <Home />,
-      },
-      {
-        path: "*",
-        element: <NotFound />,
-      },
-      {
-        path: "/login",
-        element: <Login />,
-      },
-      {
-        path: "/register",
-        element: <Register />,
-      },
-      {
-        path: "/about",
-        element: <About />,
-      },
-      {
-        path: "/shop",
-        element: <Shop />,
-      },
-      {
-        path: "/product/:productId",
-        element: <Product />,
-      },
-      {
-        path: "/cart",
-        element: <Cart />,
-      },
+export const getRouter = (user: TResponseUser | null) => {
+  console.log(user);
 
+  let childRoutes = [
+    {
+      index: true,
+      element: <Home />,
+    },
+    {
+      path: "/home",
+      element: <Home />,
+    },
+    {
+      path: "*",
+      element: <NotFound />,
+    },
+    {
+      path: "/login",
+      element: <Login />,
+    },
+    {
+      path: "/register",
+      element: <Register />,
+    },
+    {
+      path: "/about",
+      element: <About />,
+    },
+    {
+      path: "/shop",
+      element: <Shop />,
+    },
+    {
+      path: "/product/:productId",
+      element: <Product />,
+    },
+    {
+      path: "/cart",
+      element: <Cart />,
+    },
+  ];
+
+  if (user) {
+    childRoutes.push(
       {
         path: "/verifyPayment",
         element: <VerifyPayment />,
       },
-
       {
         path: "/dashboard",
         element: <Profile />,
@@ -70,11 +72,18 @@ const router = createBrowserRouter([
         path: "/dashboard/profile",
         element: <Profile />,
       },
-      {
-        path: "/dashboard/my-orders",
-        element: <MyOrders />,
-      },
+    );
+  }
 
+  if (user && user.role === "user") {
+    childRoutes.push({
+      path: "/dashboard/my-orders",
+      element: <MyOrders />,
+    });
+  }
+
+  if (user && user.role === "admin") {
+    childRoutes.push(
       {
         path: "/dashboard/all-orders",
         element: <AllOrders />,
@@ -91,8 +100,16 @@ const router = createBrowserRouter([
         path: "/dashboard/edit-product/:productId",
         element: <AddProduct />,
       },
-    ],
-  },
-]);
+    );
+  }
 
-export default router;
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <App />,
+      children: childRoutes,
+    },
+  ]);
+
+  return router;
+};

@@ -49,7 +49,7 @@ const Navbar = () => {
       <div className="hidden xl:grid grid-cols-5 w-3/4 mx-auto py-3">
         <div>
           <Link to="/" className="text-3xl font-semibold flex gap-2 items-center">
-            <img src="icon.png" alt="logo" className="size-10" />
+            <img src="/icon.png" alt="logo" className="size-10" />
             <p>
               <span className="text-slate-600">Pen</span>Craft
             </p>

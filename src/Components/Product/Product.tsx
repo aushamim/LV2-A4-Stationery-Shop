@@ -45,7 +45,7 @@ const Product = ({ product }: { product: IProduct }) => {
         <div className="flex flex-col xl:flex-row items-center justify-between gap-5 xl:gap-0">
           <p>
             <span className="text-3xl font-bold text-slate-900">${product?.price}</span>
-            <span className="text-sm text-slate-900 line-through">${product?.price + parseInt((Math.random() * 10).toFixed())}</span>
+            <span className="text-sm text-slate-900 line-through">${(product?.price + parseInt((Math.random() * 10).toFixed())).toFixed(2)}</span>
           </p>
           <button
             className="flex items-center rounded-md bg-slate-900 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-gray-700 active:scale-95 duration-300"

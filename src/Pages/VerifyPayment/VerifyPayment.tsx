@@ -54,19 +54,20 @@ const VerifyPayment = () => {
   return (
     <div className="w-11/12 xl:w-3/4 mx-auto mt-5 mb-10">
       <h1 className="text-3xl">✅ Payment verified successfully</h1>
+
       <div className="border border-slate-400 hover:border-slate-300 hover:scale-[1.01] transition duration-300 rounded-md py-3 px-5 my-8">
         <div className="grid grid-cols-1 xl:grid-cols-2 gap-5">
           <div>
             <p className="font-semibold">
               <span className="text-slate-500">Order ID:</span>{" "}
               <span className="uppercase tooltip" data-tip={orderData?.customer_order_id}>
-                #...{orderData?.customer_order_id.slice(-8)}
+                #...{orderData?.customer_order_id?.slice(-8)}
               </span>
             </p>
             <p className="text-xs font-semibold mt-1">
               <span className="text-slate-500">Invoice No: :</span>{" "}
               <span className="uppercase tooltip" data-tip={orderData?.invoice_no}>
-                #...{orderData?.invoice_no.slice(-8)}
+                #...{orderData?.invoice_no?.slice(-8)}
               </span>
             </p>
           </div>

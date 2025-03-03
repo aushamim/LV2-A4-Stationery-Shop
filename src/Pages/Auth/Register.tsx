@@ -17,14 +17,20 @@ const Register = () => {
   const navigate = useNavigate();
 
   const handleSubmit = async (values: IRegisterValues) => {
-    try {
+    const promise = async () => {
       await register(values).unwrap();
-      toast.success("User registered successfully. Please login.");
       navigate("/login");
-    } catch (err: any) {
-      toast.error(err?.data?.message);
-    }
+    };
+
+    toast.promise(promise, {
+      loading: "User registering...",
+      success: "User registered successfully. Please login.",
+      error: (error) => {
+        return error?.data?.message;
+      },
+    });
   };
+
   return (
     <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
       <div className="w-full bg-white rounded-lg md:mt-0 sm:max-w-md xl:p-0 border">

@@ -17,8 +17,6 @@ import VerifyPayment from "../Pages/VerifyPayment/VerifyPayment";
 import { TResponseUser } from "../Types/global";
 
 export const getRouter = (user: TResponseUser | null) => {
-  console.log(user);
-
   let childRoutes = [
     {
       index: true,

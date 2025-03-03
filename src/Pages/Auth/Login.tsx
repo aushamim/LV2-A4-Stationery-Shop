@@ -18,16 +18,21 @@ const Login = () => {
   const navigate = useNavigate();
 
   const handleSubmit = async (values: ILoginValues) => {
-    try {
+    const promise = async () => {
       const res = await login(values).unwrap();
       const user = verifyToken(res?.data?.token);
 
       dispatch(setUser({ user: user, token: res?.data?.token }));
-      toast.success("Logged in successfully");
       navigate("/");
-    } catch (err: any) {
-      toast.error(err?.data?.message);
-    }
+    };
+
+    toast.promise(promise, {
+      loading: "Logging in...",
+      success: "Logged in successfully",
+      error: (error) => {
+        return error?.data?.message;
+      },
+    });
   };
   return (
     <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">

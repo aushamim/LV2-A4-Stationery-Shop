@@ -72,7 +72,9 @@ const AllProducts = () => {
                 <tr key={product._id}>
                   <td>{index + 1}</td>
                   <td>
-                    <img className="w-20 h-16 object-cover rounded-md" src={product?.imgUrl} alt={product?.product?.name} />
+                    <Link to={`/product/${product?._id}`}>
+                      <img className="w-20 h-16 object-cover rounded-md" src={product?.imgUrl} alt={product?.product?.name} />
+                    </Link>
                   </td>
                   <td>{product?.name}</td>
                   <td>{product?.brand}</td>

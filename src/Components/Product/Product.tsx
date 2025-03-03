@@ -18,8 +18,9 @@ export interface IProduct {
 
 const Product = ({ product }: { product: IProduct }) => {
   const dispatch = useAppDispatch();
+
   const handleAddToCart = () => {
-    dispatch(addProduct({ id: product?._id, name: product?.name, price: product?.price }));
+    dispatch(addProduct({ id: product?._id, name: product?.name, imgUrl: product?.imgUrl, price: product?.price }));
   };
 
   return (

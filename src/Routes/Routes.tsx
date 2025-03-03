@@ -1,10 +1,10 @@
 import { createBrowserRouter } from "react-router";
 import App from "../App";
 import About from "../Pages/About/About";
-import AddProduct from "../Pages/AddProduct/AddProduct";
 import Login from "../Pages/Auth/Login";
 import Register from "../Pages/Auth/Register";
 import Cart from "../Pages/Cart/Cart";
+import AddProduct from "../Pages/Dashboard/Admin/AddProduct";
 import AllOrders from "../Pages/Dashboard/Admin/AllOrders";
 import AllProducts from "../Pages/Dashboard/Admin/AllProducts";
 import Profile from "../Pages/Dashboard/Profile";

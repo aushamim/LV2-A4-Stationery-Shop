@@ -1,13 +1,13 @@
 import { Field, Form, Formik } from "formik";
 import { useParams } from "react-router";
 import { toast } from "sonner";
-import FormInput from "../../Components/FormInput/FormInput";
-import Tab from "../../Components/Tab/Tab";
-import { selectCurrentUser } from "../../Redux/Features/Auth/authSlice";
-import { useCreateProductMutation, useGetProductQuery, useUpdateProductMutation } from "../../Redux/Features/Products/productApi";
-import { useAppSelector } from "../../Redux/hooks";
-import { adminTabs, userTabs } from "../Dashboard/tabs";
-import { SingleProductInterface } from "../Product/Product";
+import FormInput from "../../../Components/FormInput/FormInput";
+import Tab from "../../../Components/Tab/Tab";
+import { selectCurrentUser } from "../../../Redux/Features/Auth/authSlice";
+import { useCreateProductMutation, useGetProductQuery, useUpdateProductMutation } from "../../../Redux/Features/Products/productApi";
+import { useAppSelector } from "../../../Redux/hooks";
+import { SingleProductInterface } from "../../Product/Product";
+import { adminTabs, userTabs } from "../tabs";
 
 interface productInterface {
   name: string;
@@ -16,7 +16,7 @@ interface productInterface {
   category: string;
   price: number;
   quantity: number;
-  inStock: boolean;
+  inStock: boolean | string;
 }
 
 const AddProduct = () => {
@@ -54,7 +54,7 @@ const AddProduct = () => {
         price: values.price,
         quantity: values.quantity,
         imgUrl: "",
-        inStock: values.inStock,
+        inStock: values.inStock === "true",
       };
 
       if (oldImage) {
@@ -141,10 +141,10 @@ const AddProduct = () => {
               <div className="label">
                 <span className="label-text -ml-0.5 text-sm font-medium text-gray-900">In Stock</span>
               </div>
-              <select className="select select-bordered w-full" defaultValue="true" id="new-product-inStock" name="inStock">
+              <Field as="select" name="inStock" className="select select-bordered w-full">
                 <option value="true">Yes</option>
                 <option value="false">No</option>
-              </select>
+              </Field>
             </label>
 
             <button

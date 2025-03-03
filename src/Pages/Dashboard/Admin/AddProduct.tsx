@@ -141,7 +141,7 @@ const AddProduct = () => {
               <div className="label">
                 <span className="label-text -ml-0.5 text-sm font-medium text-gray-900">In Stock</span>
               </div>
-              <Field as="select" name="inStock" className="select select-bordered w-full">
+              <Field as="select" name="inStock" className="select select-bordered w-full" defaultValue="true">
                 <option value="true">Yes</option>
                 <option value="false">No</option>
               </Field>

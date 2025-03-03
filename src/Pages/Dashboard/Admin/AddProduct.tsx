@@ -23,7 +23,7 @@ const AddProduct = () => {
   const { productId } = useParams();
 
   let oldImage = null;
-  const initialValues = { name: "", brand: "", description: "", category: "", price: 0, quantity: 0, inStock: true };
+  const initialValues: productInterface = { name: "", brand: "", description: "", category: "", price: 0, quantity: 0, inStock: "true" };
 
   if (productId) {
     const { data } = useGetProductQuery(productId);
@@ -36,7 +36,7 @@ const AddProduct = () => {
       initialValues.category = product.category;
       initialValues.price = product.price;
       initialValues.quantity = product.quantity;
-      initialValues.inStock = product.inStock;
+      initialValues.inStock = product.inStock ? "true" : "false";
       oldImage = product.imgUrl;
     }
   }

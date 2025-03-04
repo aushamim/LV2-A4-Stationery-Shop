@@ -154,13 +154,13 @@ const Navbar = () => {
                 </li>
               )}
 
-              {user?.role === "user" ? (
+              {user && user?.role === "user" ? (
                 <li>
                   <Link to="/dashboard/my-orders" className="text-md font-semibold text-gray-600 hover:text-slate-600 duration-300 ease-in-out">
                     My Orders
                   </Link>
                 </li>
-              ) : (
+              ) : user && user?.role === "admin" ? (
                 <>
                   <li>
                     <Link to="/dashboard/all-orders" className="text-md font-semibold text-gray-600 hover:text-slate-600 duration-300 ease-in-out">
@@ -178,6 +178,8 @@ const Navbar = () => {
                     </Link>
                   </li>
                 </>
+              ) : (
+                ""
               )}
 
               {user ? (
